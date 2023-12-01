@@ -1,5 +1,6 @@
 import 'package:first_project/text.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class FinalSetup extends StatelessWidget {
   const FinalSetup(this.switchScreen, {super.key});
@@ -28,8 +29,12 @@ class FinalSetup extends StatelessWidget {
           const SizedBox(
             height: 50.0,
           ),
-          const TextContent(
+          Text(
             'Learn Flutter the Fun Way!!',
+            style: GoogleFonts.lato(
+              color: Colors.white,
+              fontSize: 20.0,
+            ),
           ),
           const SizedBox(
             height: 30.0,

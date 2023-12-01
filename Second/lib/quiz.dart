@@ -1,5 +1,7 @@
+import 'package:first_project/data/questions.dart';
 import 'package:first_project/final_setup.dart';
 import 'package:first_project/questions_screen.dart';
+import 'package:first_project/results_screen.dart';
 import 'package:flutter/material.dart';
 //import 'package:first_project/gradient_container.dart';
 
@@ -16,8 +18,8 @@ class _QuizState extends State<Quiz> {
 
   // @override
   // void initState() {
-  //   currentScreen = FinalSetup(switchScreen);
   //   super.initState();
+  //   currentScreen = FinalSetup(switchScreen);
   // }
 
   // void switchScreen() {
@@ -25,6 +27,8 @@ class _QuizState extends State<Quiz> {
   //     currentScreen = const QuestionsScreen();
   //   });
   // }
+
+  List<String> selectedAnswers = [];
 
   var activeScreen = 'Start-Screen';
 
@@ -34,13 +38,31 @@ class _QuizState extends State<Quiz> {
     });
   }
 
+  void chooseAnswer(String answers) {
+    selectedAnswers.add(answers);
+
+    if (selectedAnswers.length == questions.length) {
+      setState(() {
+        selectedAnswers = [];
+        activeScreen = 'Result-Screen';
+      });
+    }
+  }
+
   @override
   Widget build(context) {
-    // Widget screenWidget = FinalSetup(switchScreen);
+    Widget screenWidget = FinalSetup(switchScreen);
 
-    // if (activeScreen == 'Questions-Screen') {
-    //   screenWidget = const QuestionsScreen();
-    // }       //This can also be used to switch between the screens instead of the ternery operators.
+    if (activeScreen == 'Questions-Screen') {
+      screenWidget = QuestionsScreen(chooseAnswer);
+    }
+    //This can also be used to switch between the screens instead of the ternery operators.
+
+    if (activeScreen == 'Result-Screen') {
+      screenWidget = ResultsScreen(
+        chosenAnswers: selectedAnswers,
+      );
+    }
 
     return MaterialApp(
       home: Scaffold(
@@ -56,9 +78,10 @@ class _QuizState extends State<Quiz> {
               end: Alignment.bottomRight,
             ),
           ),
-          child: activeScreen == 'Start-Screen'
-              ? FinalSetup(switchScreen)
-              : const QuestionsScreen(),
+          // child: activeScreen == 'Start-Screen'
+          //     ? FinalSetup(switchScreen)
+          //     : QuestionsScreen(chooseAnswer),
+          child: screenWidget,
         ),
       ),
     );
@@ -93,3 +116,4 @@ class _QuizState extends State<Quiz> {
 //     );
 //   }
 // }
+
