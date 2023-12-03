@@ -57,59 +57,9 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                 });
               },
             ), //[This is mapping which converts list to a list of new datatype which we want, this won't change the initial list, instead both will coexist in the memory but the children element will not take list as an input rather it wants a widget and (...) this is spread operator which transforms the list to a comma seperated value.]
-            // AnswerButton(
-            //   currentQuestion.answers[0],
-            //   () {},
-            // ),
-            // AnswerButton(
-            //   currentQuestion.answers[1],
-            //   () {},
-            // ),
-            // AnswerButton(
-            //   currentQuestion.answers[2],
-            //   () {},
-            // ),
-            // AnswerButton(
-            //   currentQuestion.answers[3],
-            //   () {},
-            // ),
           ],
         ),
       ),
     );
   }
 }
-
-// class _QuestionsScreenState extends State<QuestionsScreen> {
-//   @override
-//   Widget build(context) {
-//     return Center(
-//       child: Column(
-//         //mainAxisSize: MainAxisSize.min,
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           const TextContent('Question-1'),
-//           const SizedBox(
-//             height: 30.0,
-//           ),
-//           ElevatedButton(
-//             onPressed: () {},
-//             child: const TextContent('Answer-1'),
-//           ),
-//           ElevatedButton(
-//             onPressed: () {},
-//             child: const TextContent('Answer-2'),
-//           ),
-//           ElevatedButton(
-//             onPressed: () {},
-//             child: const TextContent('Answer-3'),
-//           ),
-//           ElevatedButton(
-//             onPressed: () {},
-//             child: const TextContent('Answer-4'),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }

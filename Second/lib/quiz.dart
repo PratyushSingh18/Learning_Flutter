@@ -14,20 +14,6 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  // Widget? currentScreen;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   currentScreen = FinalSetup(switchScreen);
-  // }
-
-  // void switchScreen() {
-  //   setState(() {
-  //     currentScreen = const QuestionsScreen();
-  //   });
-  // }
-
   List<String> selectedAnswers = [];
 
   var activeScreen = 'Start-Screen';
@@ -38,12 +24,18 @@ class _QuizState extends State<Quiz> {
     });
   }
 
+  void restart() {
+    selectedAnswers = [];
+    setState(() {
+      activeScreen = 'Questions-Screen';
+    });
+  }
+
   void chooseAnswer(String answers) {
     selectedAnswers.add(answers);
 
     if (selectedAnswers.length == questions.length) {
       setState(() {
-        selectedAnswers = [];
         activeScreen = 'Result-Screen';
       });
     }
@@ -61,6 +53,7 @@ class _QuizState extends State<Quiz> {
     if (activeScreen == 'Result-Screen') {
       screenWidget = ResultsScreen(
         chosenAnswers: selectedAnswers,
+        onRestart: restart,
       );
     }
 
@@ -78,42 +71,9 @@ class _QuizState extends State<Quiz> {
               end: Alignment.bottomRight,
             ),
           ),
-          // child: activeScreen == 'Start-Screen'
-          //     ? FinalSetup(switchScreen)
-          //     : QuestionsScreen(chooseAnswer),
           child: screenWidget,
         ),
       ),
     );
   }
 }
-
-// class _QuizState extends State<Quiz> {
-//   Widget? currentScreen;
-
-//   @override
-//   void initState() {
-//     currentScreen = FinalSetup(switchScreen);
-//     super.initState();
-//   }
-
-//   void switchScreen() {
-//     setState(() {
-//       currentScreen = const QuestionsScreen();
-//     });
-//   }
-
-//   @override
-//   Widget build(context) {
-//     return const MaterialApp(
-//       home: Scaffold(
-//         body: GradientContainer(
-//             currentScreen,
-//             Color.fromRGBO(73, 84, 93, 1),
-//             Color.fromARGB(255, 48, 133, 159),
-//             Color.fromARGB(255, 56, 165, 112)),
-//       ),
-//     );
-//   }
-// }
-

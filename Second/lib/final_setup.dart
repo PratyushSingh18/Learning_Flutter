@@ -13,13 +13,6 @@ class FinalSetup extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Opacity(
-          //   opacity: 0.5,
-          //   child: Image.asset(
-          //     'assets/images/quiz-logo.png',
-          //     width: 250.0,
-          //   ),
-          // ),
           Image.asset(
             'assets/images/quiz-logo.png',
             width: 250.0,
